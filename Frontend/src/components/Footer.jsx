@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-start">
               <div className="text-4xl lg:text-5xl font-extrabold tracking-tight leading-none">
-                <img src="/hero.png" alt="GrihGO logo" className="block h-12 w-auto" />
+                <img src="/hero.png" alt="GrihGO logo" className="block h-20 w-auto" />
               </div>
             </div>
 
