@@ -28,7 +28,6 @@ const Footer = () => {
               <h4 className="text-white font-semibold mb-4">Eternal</h4>
               <ul className="space-y-3 text-gray-400">
                 <li><Link to="/" className="hover:text-white transition">GrihGO</Link></li>
-                <li><a href="#" className="hover:text-white transition">Blinkit</a></li>
                 <li><a href="#" className="hover:text-white transition">District</a></li>
                 <li><a href="#" className="hover:text-white transition">Hyperpure</a></li>
                 <li><a href="#" className="hover:text-white transition">Feeding India</a></li>
