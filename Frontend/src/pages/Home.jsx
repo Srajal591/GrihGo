@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FiSearch, FiMapPin } from "react-icons/fi";
-import { MdRestaurant } from "react-icons/md";
+import { MdRestaurant , MdKitchen } from "react-icons/md";
 import { BiSolidFoodMenu } from "react-icons/bi";
 import { IoLocationSharp } from "react-icons/io5";
+import { FaCheckCircle } from "react-icons/fa";
 
 import TiltedCard from "../components/TiltedCard";
 import CityVoting from "../components/CityVoting";
@@ -14,10 +15,18 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
 
+  const features = [
+    'Zero platform fees',
+    'No surge pricing',
+    'Support local restaurants',
+    'Fast delivery',
+    'Real-time tracking',
+    'Multiple payment options'
+  ];
+
   return (
     <div className="bg-offWhite">
 
-      {/* HERO SECTION */}
     {/* HERO SECTION */}
 <section className="relative h-screen w-full overflow-hidden">
   <video
@@ -63,7 +72,6 @@ const Home = () => {
       Order locally. Eat fresh. Save more.
     </motion.p>
 
-    {/* ⭐ RESTORED PLAY STORE + APP STORE BUTTONS */}
     <motion.div
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
@@ -88,56 +96,155 @@ const Home = () => {
 
 
       {/* SEARCH SECTION */}
-      <section className="bg-offWhite py-12 -mt-20 relative z-20">
-        <div className="max-w-5xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl shadow-xl p-6 border border-sage"
-          >
-            <h3 className="text-center text-2xl font-bold mb-6 text-primary">
-              Search restaurants near you
-            </h3>
+      <section className="bg-offWhite py-14 -mt-20 relative z-20">
+  <div className="max-w-6xl mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      className="bg-white rounded-2xl shadow-xl p-8 border border-sage"
+    >
+      <h3 className="text-center text-2xl md:text-3xl font-bold mb-8 text-primary">
+        Search Restaurants Near You
+      </h3>
 
-            <div className="flex flex-col md:flex-row gap-4">
-              
-              {/* SEARCH */}
-              <div className="flex-1 flex items-center bg-softGreen/20 rounded-xl px-4 py-3 shadow-sm">
-                <FiSearch className="text-2xl text-primary mr-3" />
-                <input
-                  type="text"
-                  placeholder="Search restaurant or dish"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-1 bg-transparent outline-none text-primary placeholder-primary/70"
-                />
-              </div>
+      {/* GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-              {/* LOCATION */}
-              <div className="flex-1 flex items-center bg-softGreen/20 rounded-xl px-4 py-3 shadow-sm">
-                <FiMapPin className="text-2xl text-primary mr-3" />
-                <input
-                  type="text"
-                  placeholder="Enter your location"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="flex-1 bg-transparent outline-none text-primary placeholder-primary/70"
-                />
-              </div>
-
-              {/* BUTTON */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.93 }}
-                className="bg-primary hover:bg-[#2e5535] text-white px-8 py-3 rounded-xl font-bold shadow-md"
-              >
-                Search
-              </motion.button>
-
-            </div>
-          </motion.div>
+        {/* Search Restaurant / Dish */}
+        <div className="flex items-center bg-softGreen/20 rounded-xl px-4 py-3 shadow-sm">
+          <FiSearch className="text-xl text-primary mr-3" />
+          <input
+            type="text"
+            placeholder="Restaurant or Dish"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="flex-1 bg-transparent outline-none text-primary placeholder-primary/70"
+          />
         </div>
-      </section>
+
+        {/* Dine In */}
+        <div className="flex items-center bg-softGreen/20 rounded-xl px-4 py-3 shadow-sm">
+          <FiSearch className="text-xl text-primary mr-3" />
+          <input
+            type="text"
+            placeholder="Dine In"
+            className="flex-1 bg-transparent outline-none text-primary placeholder-primary/70"
+          />
+        </div>
+
+        {/* Catering */}
+        <div className="flex items-center bg-softGreen/20 rounded-xl px-4 py-3 shadow-sm">
+          <FiSearch className="text-xl text-primary mr-3" />
+          <input
+            type="text"
+            placeholder="Catering"
+            className="flex-1 bg-transparent outline-none text-primary placeholder-primary/70"
+          />
+        </div>
+
+        {/* Location */}
+        <div className="flex items-center bg-softGreen/20 rounded-xl px-4 py-3 shadow-sm">
+          <FiMapPin className="text-xl text-primary mr-3" />
+          <input
+            type="text"
+            placeholder="Enter your location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="flex-1 bg-transparent outline-none text-primary placeholder-primary/70"
+          />
+        </div>
+
+        {/* Party Zone */}
+        <div className="flex items-center bg-softGreen/20 rounded-xl px-4 py-3 shadow-sm">
+          <FiMapPin className="text-xl text-primary mr-3" />
+          <input
+            type="text"
+            placeholder="Party Zone Near You"
+            className="flex-1 bg-transparent outline-none text-primary placeholder-primary/70"
+          />
+        </div>
+
+        {/* Search Button */}
+        <motion.button
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
+          className="bg-primary hover:bg-[#2e5535] text-white rounded-xl font-semibold shadow-md flex items-center justify-center py-3"
+        >
+          Search
+        </motion.button>
+
+      </div>
+    </motion.div>
+  </div>
+</section>
+
+
+{/* OUR SERVICES SECTION */}
+<section className="py-20 bg-offWhite relative z-10">
+  <div className="max-w-7xl mx-auto px-4">
+
+    {/* Section Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-14"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+        Our Services
+      </h2>
+      <p className="text-lg text-primary/80 max-w-2xl mx-auto">
+        Everything you need for a seamless food ordering experience
+      </p>
+    </motion.div>
+
+    {/* SERVICES GRID (Previously Why Choose GrihGO?) */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          icon: <MdRestaurant className="text-6xl text-primary" />,
+          title: "Local Restaurants",
+          desc: "Support trusted local restaurants and home-grown brands.",
+        },
+        {
+          icon: <BiSolidFoodMenu className="text-6xl text-primary" />,
+          title: "Zero Hidden Charges",
+          desc: "Transparent pricing with no extra platform fees.",
+        },
+        {
+          icon: <MdKitchen className="text-6xl text-primary" />,
+          title: "Cloud Kitchens",
+          desc: "Fresh meals prepared in verified cloud kitchens.",
+        },
+        {
+          icon: <IoLocationSharp className="text-6xl text-primary" />,
+          title: "Fast Delivery",
+          desc: "Quick deliveries from outlets closest to you.",
+        },
+      ].map((item, i) => (
+        <motion.div
+          key={i}
+          whileHover={{ y: -6, scale: 1.03 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          className="bg-softGreen/20 p-8 rounded-2xl shadow-md hover:shadow-xl 
+                     text-center border border-sage"
+        >
+          <div className="flex justify-center mb-6">
+            {item.icon}
+          </div>
+          <h3 className="text-xl font-bold mb-3 text-primary">
+            {item.title}
+          </h3>
+          <p className="text-primary/80 text-sm leading-relaxed">
+            {item.desc}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
 
     <section className="py-20 bg-offWhite">
@@ -245,7 +352,7 @@ const Home = () => {
       <CityVoting />
 
       {/* WHY CHOOSE SECTION */}
-      <section className="py-20 bg-offWhite">
+      {/* <section className="py-20 bg-offWhite">
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -268,6 +375,11 @@ const Home = () => {
                 desc: "No platform fees. No surprises.",
               },
               {
+                icon: <MdKitchen className="text-6xl text-primary" />,
+                title: "Cloud Kitchen",
+                desc: "No platform fees. No surprises.",
+              },
+              {
                 icon: <IoLocationSharp className="text-6xl text-primary" />,
                 title: "Fast Delivery",
                 desc: "Quick service from your nearest outlets.",
@@ -287,9 +399,44 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* TOP CATEGORIES WITH TILTED CARDS */}
+
+      {/* WHAT YOU GET WITH GRIHGO SECTION */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              What You Get With GrihGO
+            </h2>
+            <p className="text-xl text-gray-600">
+              The same great experience in every city
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-gradient-to-br from-softGreen/30 to-softGreen/10 rounded-2xl p-6 text-center shadow-lg border border-sage/30 hover:shadow-xl transition-all duration-300"
+              >
+                <FaCheckCircle className="text-4xl text-primary mx-auto mb-4" />
+                <p className="font-semibold text-gray-900 text-lg">{feature}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
   
       {/* POPUP */}
       <AppPopup isOpen={showAppPopup} onClose={() => setShowAppPopup(false)} />

@@ -30,7 +30,7 @@ const Cities = () => {
 
   return (
     <div>
-      {/* Hero Section */}
+   
      {/* Hero Section */}
 <section className="relative text-white py-20 overflow-hidden">
 
